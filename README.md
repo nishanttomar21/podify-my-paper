@@ -12,7 +12,7 @@ Here's what the app looks like:
 
 ![App UI Screenshot](screenshot.png)
 
-## 📊 Flow Diagram
+## Flow Diagram
 
 ```mermaid
 graph TD
@@ -26,7 +26,7 @@ graph TD
     G --> H[Download Podcast]
 ```
 
-## 🚦 How It Works
+## How It Works
 
 1. **Upload PDF**  
    Upload any academic, research, or technical PDF using the web interface.
@@ -48,7 +48,7 @@ graph TD
    - All audio segments are combined into a single MP3.
    - Download and listen to your personalized podcast episode!
 
-## 🚀 Features
+## Features
 
 - **Podcast from PDF:** Upload any research paper or technical PDF and generate a podcast script in a realistic dialogue format.
 - **Two Speaker Roles:** Realistic back-and-forth between "Nishant" (host) and "Megha" (expert guest).
@@ -57,14 +57,14 @@ graph TD
 - **Text-to-Speech:** Audio generated with realistic voices (best with Mac; cross-platform option included).
 - **Easy Web UI:** Built with Gradio for one-click use—no code required for users.
 
-## 🖥️ Requirements
+## Requirements
 
 - Python 3.8 or higher
 - [Google Generative AI API Key](https://ai.google.dev/)
 - macOS (for most realistic voices via `say` command) OR Windows/Linux (using gTTS, see below)
 - See [requirements.txt](requirements.txt) for Python packages.
 
-## ⚙️ Installation
+## Installation
 
 ```bash
 git clone https://github.com/nishanttomar21/podify-my-paper.git
