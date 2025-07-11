@@ -1,0 +1,13 @@
+# Note: You must have ffmpeg installed on your system (ffmpeg is a powerful, open-source command-line tool used to process, convert, and manipulate audio and video files.)
+# Mac: brew install ffmpeg
+# Ubuntu: sudo apt-get install ffmpeg
+# Win: https://ffmpeg.org/download.html (add to PATH)
+# Google Colab: !apt-get install -y ffmpeg
+
+gradio==3.50.2
+pdfplumber
+google-generativeai
+gtts
+pydub
+dotenv
+pyttsx3
