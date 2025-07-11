@@ -2,13 +2,51 @@
 
 ## Overview
 
-Turn your research paper, academic PDF, or technical document into an engaging AI-generated podcast—fully voiced and ready to share!
+Podify My Paper instantly transforms your research papers, academic PDFs, or technical documents into engaging, AI-narrated podcast episodes. No technical skills required! Just upload your PDF, choose your preferred podcast style, and let advanced AI models craft a natural, insightful dialogue between two expert speakers. Download and share your audio podcast in minutes.
+
+Whether you want a deep-dive discussion or a concise highlights summary, Podify My Paper brings your ideas to life through conversational storytelling.
 
 ## App Screenshot
 
 Here's what the app looks like:
 
 ![App UI Screenshot](screenshot.png)
+
+## 📊 Flow Diagram
+
+```mermaid
+graph TD
+    A[User uploads PDF] --> B[Extract & Chunk Text]
+    B --> C{Podcast Mode?}
+    C -- Full --> D[Generate Full Script]
+    C -- Summary --> E[Summarize, then Script]
+    D --> F[Text-to-Speech for Each Chunk]
+    E --> F
+    F --> G[Combine Audio to MP3]
+    G --> H[Download Podcast]
+```
+
+## 🚦 How It Works
+
+1. **Upload PDF**  
+   Upload any academic, research, or technical PDF using the web interface.
+
+2. **Choose Podcast Style**  
+   - **Full Podcast (All Details):** Converts your entire document into a detailed, conversational podcast.
+   - **Highlights Podcast (Summary Only):** Generates a concise, summary-focused podcast episode.
+
+3. **AI Script Generation**  
+   - Uses **Google Gemini (Generative AI)** to analyze your document, summarize content (if needed), and create a natural back-and-forth script between "Nishant" (host) and "Megha" (expert guest).
+   - For longer documents, splits content into chunks to ensure smooth, manageable podcast segments.
+
+4. **Text-to-Speech Audio Creation**  
+   - Each line of the script is converted to speech using realistic voices:
+     - On **macOS**, uses the built-in `say` command for lifelike voices.
+     - On **Windows/Linux**, uses [gTTS](https://pypi.org/project/gTTS/) for cross-platform support.
+
+5. **Download Podcast**  
+   - All audio segments are combined into a single MP3.
+   - Download and listen to your personalized podcast episode!
 
 ## 🚀 Features
 
@@ -32,3 +70,4 @@ Here's what the app looks like:
 git clone https://github.com/nishanttomar21/podify-my-paper.git
 cd podify-my-paper
 pip install -r requirements.txt
+```
