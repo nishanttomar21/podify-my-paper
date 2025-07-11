@@ -1,0 +1,32 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Audio and temporary output
+podcast_chunks/
+*.wav
+*.mp3
+*.aiff
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Environment variables / secrets
+.venv/
+venv/
+
+# VS Code settings
+.vscode/
+
+# Mac OS files
+.DS_Store
+
+# System files
+Thumbs.db
+
+# Gradio logs/cache
+gradio_cached_examples/
+
+# PDF files (if you don't want to track uploads)
+*.pdf
