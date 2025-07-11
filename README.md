@@ -59,10 +59,13 @@ graph TD
 
 ## Requirements
 
-- Python 3.8 or higher
-- [Google Generative AI API Key](https://ai.google.dev/)
-- macOS (for most realistic voices via `say` command) OR Windows/Linux (using gTTS, see below)
-- See [requirements.txt](requirements.txt) for Python packages.
+- **Python:** 3.8 or higher  
+- **Google Gemini API Key:** Required for AI podcast script and summarization. [Sign up here.](https://ai.google.dev/)  
+- **Audio Generation:**  
+  - **macOS:** Uses the built-in `say` command for lifelike podcast voices (recommended for best audio quality).
+  - **Windows/Linux:** Uses [gTTS (Google Text-to-Speech)](https://pypi.org/project/gTTS/) for cross-platform speech synthesis.
+- **Python Dependencies:**  
+  - All required Python packages are listed in [requirements.txt](requirements.txt).
 
 ## Installation
 
@@ -70,4 +73,28 @@ graph TD
 git clone https://github.com/nishanttomar21/podify-my-paper.git
 cd podify-my-paper
 pip install -r requirements.txt
+```
+
+## Usage
+
+### 1. Set up API Key(s):
+
+You'll need an API key for **Google Gemini (Generative AI)**.  
+You can provide your API key in one of two ways:
+
+- **Option 1:** Directly edit the code (replace `GEMINI_API_KEY = "Enter-your-api-key"` in `main.py` with your actual key).
+- **Option 2:** Set the key as an environment variable in your terminal (recommended):
+
+    ```bash
+    export GEMINI_API_KEY=your_actual_api_key_here
+    ```
+
+*(On Windows use `set GEMINI_API_KEY=your_actual_api_key_here`)*
+
+### 2. Run the App
+
+After installation and setting the API key, start the web app with:
+
+```bash
+python main.py
 ```
