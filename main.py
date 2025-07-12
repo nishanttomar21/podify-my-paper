@@ -7,11 +7,10 @@ from pydub import AudioSegment
 import subprocess
 
 # --- CONFIGURATION ---
-GEMINI_API_KEY = "Enter-your-api-key"
+GEMINI_API_KEY = "AIzaSyBB6KR5Y7t-z6FNwMfeOi7clNlBQvRUa1Q"
 OUTPUT_FOLDER = os.path.join(os.getcwd(), "podcast_chunks")
 GEMINI_MODEL = "gemini-1.5-flash"
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
-
 genai.configure(api_key=GEMINI_API_KEY)
 
 # --- TEXT EXTRACTION & CHUNKING ---
@@ -160,7 +159,7 @@ def split_script_by_speaker(script):
 
 # --- AUDIO GENERATION ---
 
-# --------------------- Mac ONLY (best for two realistic voices) ----------------------
+# ---------------------------- Mac ONLY (best for two realistic voices) -----------------------------------
 def save_tts(text, speaker, path):
     """Converts text to speech using Mac's built-in 'say' command with different voices for each speaker (macOS only)."""
     voice = "Alex" if speaker == "Nishant" else "Samantha"
@@ -170,7 +169,7 @@ def save_tts(text, speaker, path):
     audio.export(path, format="wav")
     os.remove(temp_aiff)
 
-# --------------------- Cross-platform (works on Windows, Mac, Linux) ----------------------
+# --------------------- Cross-platform (works on Windows, Mac, Linux; only 1 voice) ----------------------
 # def save_tts(text, speaker, path):
 #     """Converts text to speech using gTTS for cross-platform compatibility (works on Windows, Linux, and macOS)."""
 #     tts = gTTS(text=text, lang='en', slow=False)
