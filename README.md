@@ -6,17 +6,11 @@ Podify My Paper instantly transforms your research papers, academic PDFs, or tec
 
 Whether you want a deep-dive discussion or a concise highlights summary, Podify My Paper brings your ideas to life through conversational storytelling.
 
-## App Screenshot
-
-Here's what the app looks like:
-
-![App UI Screenshot](assets/screenshot.png)
-
 ## Demo Video
 
-Want to see Podify My Paper in action?
+See Podify My Paper in action!
 
-[![Watch the video](assets/screenshot.png)](https://github.com/nishanttomar21/podify-my-paper/assets/demo.mp4)
+https://github.com/user-attachments/assets/d9058c59-d723-4976-adf8-c3630dc72306
 
 ## Flow Diagram
 
