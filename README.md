@@ -12,6 +12,14 @@ Here's what the app looks like:
 
 ![App UI Screenshot](screenshot.png)
 
+## Demo Video
+
+Want to see Podify My Paper in action?  
+🎬 **Check out a real example below to watch the entire workflow—from PDF upload to AI podcast download:**
+
+[![Watch the demo video](screenshot.png)](demo.mp4)
+> Click to watch the end-to-end demo.
+
 ## Flow Diagram
 
 ```mermaid
@@ -40,9 +48,18 @@ graph TD
    - For longer documents, splits content into chunks to ensure smooth, manageable podcast segments.
 
 4. **Text-to-Speech Audio Creation**  
-   - Each line of the script is converted to speech using realistic voices:
-     - On **macOS**, uses the built-in `say` command for lifelike voices.
-     - On **Windows/Linux**, uses [gTTS](https://pypi.org/project/gTTS/) for cross-platform support.
+Each line of the script is converted to speech using realistic voices. You can now choose between:
+
+- **Murf AI TTS (multi-voice, cross-platform):**  
+  The default, recommended option, with natural-sounding voices for both host and guest. No platform restrictions!
+
+- **macOS Say Command (optional):**  
+  For Mac users who want to use built-in lifelike voices.
+
+- **gTTS (optional):**  
+  For simple, single-voice cross-platform support.
+
+> **Note:** Murf AI is now integrated and used by default for the best-quality, multi-speaker experience.
 
 5. **Download Podcast**  
    - All audio segments are combined into a single MP3.
@@ -54,18 +71,27 @@ graph TD
 - **Two Speaker Roles:** Realistic back-and-forth between "Nishant" (host) and "Megha" (expert guest).
 - **Detailed or Highlight Mode:** Choose between a full deep-dive or a concise highlights-only summary podcast.
 - **AI Summarization & Scripting:** Uses Google Gemini (Generative AI) for natural, context-aware podcast scripts.
-- **Text-to-Speech:** Audio generated with realistic voices (best with Mac; cross-platform option included).
+
+**Text-to-Speech:**
+- **Murf AI Integration:** Best-in-class, lifelike AI voices for both host and guest (multi-voice, cross-platform, high quality).
+- **macOS 'say' (Optional):** Leverage built-in Mac voices for local TTS.
+- **gTTS (Optional):** Simple, universal fallback.
+
 - **Easy Web UI:** Built with Gradio for one-click use—no code required for users.
 
 ## Requirements
 
-- **Python:** 3.8 or higher  
-- **Google Gemini API Key:** Required for AI podcast script and summarization. [Sign up here.](https://ai.google.dev/)  
-- **Audio Generation:**  
-  - **macOS:** Uses the built-in `say` command for lifelike podcast voices (recommended for best audio quality).
-  - **Windows/Linux:** Uses [gTTS (Google Text-to-Speech)](https://pypi.org/project/gTTS/) for cross-platform speech synthesis.
-- **Python Dependencies:**  
-  - All required Python packages are listed in [requirements.txt](requirements.txt).
+- **Python:** 3.8 or higher
+- **Google Gemini API Key:** Required for AI podcast script and summarization. [Sign up here.](https://aistudio.google.com/app/apikey)
+- **Murf AI API Key:** Required for Murf TTS voice generation. [Get your Murf API key here.](https://murf.ai/)
+
+**Audio Generation:**
+- **Default:** Uses Murf AI for multi-voice TTS on all platforms.
+- **macOS (optional):** Uses the built-in `say` command for lifelike podcast voices.
+- **Windows/Linux (optional):** Uses gTTS (Google Text-to-Speech) for cross-platform speech synthesis.
+
+**Python Dependencies:**
+- All required Python packages are listed in `requirements.txt`.
 
 ## Installation
 
@@ -79,17 +105,33 @@ pip install -r requirements.txt
 
 ### 1. Set up API Key(s):
 
-You'll need an API key for **Google Gemini (Generative AI)**.  
-You can provide your API key in one of two ways:
+You'll need API keys for:
 
-- **Option 1:** Directly edit the code (replace `GEMINI_API_KEY = "Enter-your-api-key"` in `main.py` with your actual key).
-- **Option 2:** Set the key as an environment variable in your terminal (recommended):
+- **Google Gemini** (Generative AI)
+- **Murf AI TTS**
 
-    ```bash
-    export GEMINI_API_KEY=your_actual_api_key_here
-    ```
+You can provide your API keys in one of two ways:
 
-*(On Windows use `set GEMINI_API_KEY=your_actual_api_key_here`)*
+**Option 1: Directly edit the code (`main.py`) and replace:**
+
+```python
+GEMINI_API_KEY = "Enter-your-api-key"
+MURF_API_KEY = "Enter-your-murf-api-key"
+```
+
+**Option 2 (Recommended): Set the keys as environment variables in your terminal:**
+
+```bash
+export GEMINI_API_KEY=your_actual_gemini_key_here
+export MURF_API_KEY=your_actual_murf_key_here
+```
+
+On **Windows**, use:
+
+```cmd
+set GEMINI_API_KEY=your_actual_key_here
+set MURF_API_KEY=your_actual_murf_key_here
+```
 
 ### 2. Run the App
 
@@ -98,3 +140,11 @@ After installation and setting the API key, start the web app with:
 ```bash
 python main.py
 ```
+
+## Credits
+
+- [Gradio](https://gradio.app/) for the simple, no-code UI.
+- [Google Gemini API](https://aistudio.google.com/app/apikey) for natural script generation and summarization.
+- [Murf AI](https://murf.ai/) for high-quality, multi-voice audio generation.
+- [gTTS](https://pypi.org/project/gTTS/) and [pydub](https://github.com/jiaaro/pydub) for TTS and audio processing utilities.
+

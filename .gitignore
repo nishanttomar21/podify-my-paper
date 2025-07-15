@@ -27,6 +27,3 @@ Thumbs.db
 
 # Gradio logs/cache
 gradio_cached_examples/
-
-# PDF files (if you don't want to track uploads)
-*.pdf

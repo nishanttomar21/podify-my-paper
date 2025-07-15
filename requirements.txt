@@ -11,3 +11,5 @@ gtts
 pydub
 dotenv
 pyttsx3
+murf
+requests

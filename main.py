@@ -3,13 +3,18 @@ import pdfplumber
 import gradio as gr
 import google.generativeai as genai
 from gtts import gTTS
+from murf import Murf
 from pydub import AudioSegment
 import subprocess
+import requests
+import base64
 
 # --- CONFIGURATION ---
-GEMINI_API_KEY = "AIzaSyBB6KR5Y7t-z6FNwMfeOi7clNlBQvRUa1Q"
+GEMINI_API_KEY = "YOUR_API_KEY"
 OUTPUT_FOLDER = os.path.join(os.getcwd(), "podcast_chunks")
 GEMINI_MODEL = "gemini-1.5-flash"
+MURF_API_KEY = "YOUR_API_KEY"
+client = Murf(api_key=MURF_API_KEY)
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 genai.configure(api_key=GEMINI_API_KEY)
 
@@ -159,21 +164,76 @@ def split_script_by_speaker(script):
 
 # --- AUDIO GENERATION ---
 
-# ---------------------------- Mac ONLY (best for two realistic voices) -----------------------------------
-def save_tts(text, speaker, path):
-    """Converts text to speech using Mac's built-in 'say' command with different voices for each speaker (macOS only)."""
-    voice = "Alex" if speaker == "Nishant" else "Samantha"
-    temp_aiff = path.replace('.wav', '.aiff')
-    subprocess.run(["say", "-v", voice, text, "-o", temp_aiff])
-    audio = AudioSegment.from_file(temp_aiff)
-    audio.export(path, format="wav")
-    os.remove(temp_aiff)
+# ---------------------------- Mac ONLY (best for two realistic voices) ---------------------------------
+# def save_tts(text, speaker, path):
+#     """Converts text to speech using Mac's built-in 'say' command with different voices for each speaker (macOS only)."""
+#     voice = "Alex" if speaker == "Nishant" else "Samantha"
+#     temp_aiff = path.replace('.wav', '.aiff')
+#     subprocess.run(["say", "-v", voice, text, "-o", temp_aiff])
+#     audio = AudioSegment.from_file(temp_aiff)
+#     audio.export(path, format="wav")
+#     os.remove(temp_aiff)
 
 # --------------------- Cross-platform (works on Windows, Mac, Linux; only 1 voice) ----------------------
 # def save_tts(text, speaker, path):
 #     """Converts text to speech using gTTS for cross-platform compatibility (works on Windows, Linux, and macOS)."""
 #     tts = gTTS(text=text, lang='en', slow=False)
 #     tts.save(path)
+
+# ---------------------------- Murf AI TTS (Multi-voice, cross-platform) ---------------------------------
+def save_tts(text, speaker, path):
+    """
+    Converts text to speech using Murf AI, saves the audio file at the given path.
+    Handles Murf API responses that may be URL, base64-encoded string, or raw bytes.
+    """
+    # Select Murf voice based on speaker name
+    voice_id = "en-US-ken" if speaker == "Nishant" else "en-US-natalie"
+    try:
+        # Generate audio using Murf API
+        response = client.text_to_speech.generate(
+            text=text,
+            voice_id=voice_id
+        )
+        audio_file = response.audio_file
+        if audio_file:
+            # If response is a string, it may be a URL or base64 data
+            if isinstance(audio_file, str):
+                if audio_file.startswith('http'):
+                    # If audio_file is a URL: download the audio file
+                    audio_response = requests.get(audio_file)
+                    if audio_response.status_code == 200:
+                        with open(path, "wb") as f:
+                            f.write(audio_response.content)
+                    else:
+                        print(f"Failed to download audio from Murf URL: {audio_file}")
+                        return
+                else:
+                    # If audio_file is a base64-encoded string, decode and save as binary
+                    try:
+                        audio_data = base64.b64decode(audio_file)
+                        with open(path, "wb") as f:
+                            f.write(audio_data)
+                    except Exception as e:
+                        print(f"Base64 decode error: {e}")
+                        return
+            # If response is already bytes, just save it directly
+            elif isinstance(audio_file, bytes):
+                with open(path, "wb") as f:
+                    f.write(audio_file)
+            else:
+                # Unknown response type
+                print(f"Unknown audio_file type from Murf: {type(audio_file)}")
+                return
+
+            # Sanity check: ensure the saved file is not empty
+            if os.path.getsize(path) == 0:
+                print(f"Error: Audio file {path} is empty.")
+        else:
+            # No audio file returned by Murf
+            print(f"No audio data received from Murf for {speaker}.")
+    except Exception as e:
+        # Catch and print any exceptions for easier debugging
+        print(f"Error with Murf TTS for {speaker}: {e}")
 
 # --- MAIN LOGIC ---
 def pdf_to_podcast(pdf_file, podcast_mode):
