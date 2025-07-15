@@ -17,7 +17,6 @@ Here's what the app looks like:
 Want to see Podify My Paper in action?
 
 [![Watch the video](assets/screenshot.png)](https://github.com/nishanttomar21/podify-my-paper/assets/demo.mp4)
-> Click to watch the end-to-end demo.
 
 ## Flow Diagram
 
