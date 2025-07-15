@@ -10,14 +10,13 @@ Whether you want a deep-dive discussion or a concise highlights summary, Podify 
 
 Here's what the app looks like:
 
-![App UI Screenshot](screenshot.png)
+![App UI Screenshot](assets/screenshot.png)
 
 ## Demo Video
 
-Want to see Podify My Paper in action?  
-🎬 **Check out a real example below to watch the entire workflow—from PDF upload to AI podcast download:**
+Want to see Podify My Paper in action?
 
-[![Watch the demo video](screenshot.png)](demo.mp4)
+[![Watch the video](assets/screenshot.png)](https://github.com/nishanttomar21/podify-my-paper/assets/demo.mp4)
 > Click to watch the end-to-end demo.
 
 ## Flow Diagram
