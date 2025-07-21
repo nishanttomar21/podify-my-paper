@@ -73,18 +73,17 @@ Each line of the script is converted to speech using realistic voices. You can n
 
 ## Features
 
+- **PDF-to-Podcast:** Converts any research or technical PDF into a two-speaker podcast.
 
-**PDF-to-Podcast:** Converts any research or technical PDF into a two-speaker podcast.
+- **Multi-Language Support:** Supports **English, Hindi, German, and French** with AI-powered translation.
 
-**Multi-Language Support:** Supports **English, Hindi, German, and French** with AI-powered translation.
+- **Multi-Voice Support:** Both **host** and **guest** have their own unique, realistic AI voices (via **Murf**).
 
-**Multi-Voice Support:** Both **host** and **guest** have their own unique, realistic AI voices (via **Murf**).
+- **AI Summarization:** Generate either a **detailed** or **summary-based** podcast episode.
 
-**AI Summarization:** Generate either a **detailed** or **summary-based** podcast episode.
+- **Web UI:** Easy-to-use **Gradio interface**—no coding required.
 
-**Web UI:** Easy-to-use **Gradio interface**—no coding required.
-
-**Automatic Cleanup:** Cleans up all intermediate audio files from `podcast_chunks` after each run.
+- **Automatic Cleanup:** Cleans up all intermediate audio files from `podcast_chunks` after each run.
 
 ## Requirements
 
