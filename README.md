@@ -2,15 +2,22 @@
 
 ## Overview
 
-Podify My Paper instantly transforms your research papers, academic PDFs, or technical documents into engaging, AI-narrated podcast episodes. No technical skills required! Just upload your PDF, choose your preferred podcast style, and let advanced AI models craft a natural, insightful dialogue between two expert speakers. Download and share your audio podcast in minutes.
+Podify My Paper instantly transforms your research papers, academic PDFs, or technical documents into engaging, AI-narrated podcast episodes. No technical skills required! Just upload your PDF, choose your preferred podcast style, language and let advanced AI models craft a natural, insightful dialogue between two expert speakers. Download and share your audio podcast in minutes.
 
 Whether you want a deep-dive discussion or a concise highlights summary, Podify My Paper brings your ideas to life through conversational storytelling.
+
+## What’s New
+
+- **Language Selection:**  
+  Supports English, Hindi, German, and French. Generate podcasts in your preferred language.  
+- **Multi-Voice, Multi-Language Audio:**  
+  Murf AI produces high-quality voices for both "Nishant" and "Megha" in all supported languages (where available).
 
 ## Demo Video
 
 See Podify My Paper in action!
 
-https://github.com/user-attachments/assets/d9058c59-d723-4976-adf8-c3630dc72306
+https://github.com/user-attachments/assets/deb178b9-facb-410b-aa2c-2d367f90dacc
 
 ## Flow Diagram
 
@@ -20,10 +27,11 @@ graph TD
     B --> C{Podcast Mode?}
     C -- Full --> D[Generate Full Script]
     C -- Summary --> E[Summarize, then Script]
-    D --> F[Text-to-Speech for Each Chunk]
+    D --> F[Text-to-Speech for Each Chunk - Selected Language & Voices]
     E --> F
     F --> G[Combine Audio to MP3]
     G --> H[Download Podcast]
+    H --> I[Clean Up Temporary Files]
 ```
 
 ## How It Works
@@ -35,55 +43,55 @@ graph TD
    - **Full Podcast (All Details):** Converts your entire document into a detailed, conversational podcast.
    - **Highlights Podcast (Summary Only):** Generates a concise, summary-focused podcast episode.
 
-3. **AI Script Generation**  
+3. **Select Language**  
+   Choose from English, Hindi, German, or French for your podcast’s narration and script.
+
+4. **AI Script Generation**  
    - Uses **Google Gemini (Generative AI)** to analyze your document, summarize content (if needed), and create a natural back-and-forth script between "Nishant" (host) and "Megha" (expert guest).
    - For longer documents, splits content into chunks to ensure smooth, manageable podcast segments.
 
-4. **Text-to-Speech Audio Creation**  
+5. **Text-to-Speech Audio Creation**  
 Each line of the script is converted to speech using realistic voices. You can now choose between:
 
-- **Murf AI TTS (multi-voice, cross-platform):**  
-  The default, recommended option, with natural-sounding voices for both host and guest. No platform restrictions!
+   - **Murf AI TTS (multi-voice, cross-platform):**  
+     The default, recommended option, with natural-sounding voices for both host and guest. No platform restrictions!
 
-- **macOS Say Command (optional):**  
-  For Mac users who want to use built-in lifelike voices.
+   - **macOS Say Command (optional):**  
+     For Mac users who want to use built-in lifelike voices.
 
-- **gTTS (optional):**  
-  For simple, single-voice cross-platform support.
+   - **gTTS (optional):**  
+     For simple, single-voice cross-platform support.
 
 > **Note:** Murf AI is now integrated and used by default for the best-quality, multi-speaker experience.
 
-5. **Download Podcast**  
+6. **Download Podcast**  
    - All audio segments are combined into a single MP3.
    - Download and listen to your personalized podcast episode!
 
+7. **Automatic Cleanup**  
+   Temporary audio chunks are deleted after the MP3 is created.
+
 ## Features
 
-- **Podcast from PDF:** Upload any research paper or technical PDF and generate a podcast script in a realistic dialogue format.
-- **Two Speaker Roles:** Realistic back-and-forth between "Nishant" (host) and "Megha" (expert guest).
-- **Detailed or Highlight Mode:** Choose between a full deep-dive or a concise highlights-only summary podcast.
-- **AI Summarization & Scripting:** Uses Google Gemini (Generative AI) for natural, context-aware podcast scripts.
 
-**Text-to-Speech:**
-- **Murf AI Integration:** Best-in-class, lifelike AI voices for both host and guest (multi-voice, cross-platform, high quality).
-- **macOS 'say' (Optional):** Leverage built-in Mac voices for local TTS.
-- **gTTS (Optional):** Simple, universal fallback.
+**PDF-to-Podcast:** Converts any research or technical PDF into a two-speaker podcast.
 
-- **Easy Web UI:** Built with Gradio for one-click use—no code required for users.
+**Multi-Language Support:** Supports **English, Hindi, German, and French** with AI-powered translation.
+
+**Multi-Voice Support:** Both **host** and **guest** have their own unique, realistic AI voices (via **Murf**).
+
+**AI Summarization:** Generate either a **detailed** or **summary-based** podcast episode.
+
+**Web UI:** Easy-to-use **Gradio interface**—no coding required.
+
+**Automatic Cleanup:** Cleans up all intermediate audio files from `podcast_chunks` after each run.
 
 ## Requirements
 
 - **Python:** 3.8 or higher
 - **Google Gemini API Key:** Required for AI podcast script and summarization. [Sign up here.](https://aistudio.google.com/app/apikey)
 - **Murf AI API Key:** Required for Murf TTS voice generation. [Get your Murf API key here.](https://murf.ai/)
-
-**Audio Generation:**
-- **Default:** Uses Murf AI for multi-voice TTS on all platforms.
-- **macOS (optional):** Uses the built-in `say` command for lifelike podcast voices.
-- **Windows/Linux (optional):** Uses gTTS (Google Text-to-Speech) for cross-platform speech synthesis.
-
-**Python Dependencies:**
-- All required Python packages are listed in `requirements.txt`.
+- **Python Dependencies:** See `requirements.txt`.
 
 ## Installation
 
@@ -133,10 +141,18 @@ After installation and setting the API key, start the web app with:
 python main.py
 ```
 
+## Changelog
+
+### v2.0
+
+- **Language selection:** English, Hindi, German, French
+- **Translation:** Scripts are translated automatically, and multi-voice TTS is supported per language
+- **Automatic cleanup:** The `podcast_chunks` folder is cleaned after MP3 creation
+
 ## Credits
 
-- [Gradio](https://gradio.app/) for the simple, no-code UI.
-- [Google Gemini API](https://aistudio.google.com/app/apikey) for natural script generation and summarization.
-- [Murf AI](https://murf.ai/) for high-quality, multi-voice audio generation.
-- [gTTS](https://pypi.org/project/gTTS/) and [pydub](https://github.com/jiaaro/pydub) for TTS and audio processing utilities.
-
+- [Gradio](https://gradio.app/) – Easy-to-use web UI for the app  
+- [Google Gemini API](https://aistudio.google.com/app/apikey) – AI script generation & summarization  
+- [Murf AI](https://murf.ai/) – High-quality, multi-voice text-to-speech  
+- [gTTS](https://pypi.org/project/gTTS/) – Alternative simple TTS engine  
+- [pydub](https://github.com/jiaaro/pydub) – Audio processing and MP3 export  
