@@ -155,3 +155,7 @@ python main.py
 - [Murf AI](https://murf.ai/) – High-quality, multi-voice text-to-speech  
 - [gTTS](https://pypi.org/project/gTTS/) – Alternative simple TTS engine  
 - [pydub](https://github.com/jiaaro/pydub) – Audio processing and MP3 export  
+
+## License
+
+[MIT License](LICENSE)
